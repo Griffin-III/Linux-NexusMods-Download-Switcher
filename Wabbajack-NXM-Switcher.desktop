@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Categories=Game;
+Exec="$HOME/.local/share/wabbajack/Wabbajack-NXM-Switcher.sh" %u
+Name=Wabbajack NXM Switcher
+Terminal=true
+Comment="Change Nexus URL Instance"
