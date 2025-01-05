@@ -25,9 +25,12 @@ function install () {
 	mkdir $SHAREDIR/wabbajack
 	echo "Setting Up Nexus Handler"
 	cp wabbajack-nxm-handler.sh $SHAREDIR/wabbajack
+	# swap ~ for actual home path of user in .desktop files for compatibility
+	sed -i "s|~|$HOME|g" "wabbajack-nxm-handler.desktop"
 	cp wabbajack-nxm-handler.desktop $SHAREDIR/applications
 	echo "Setting Up Switcher Shortcut"
 	cp Wabbajack-NXM-Switcher.sh $SHAREDIR/wabbajack
+	sed -i "s|~|$HOME|g" "Wabbajack-NXM-Switcher.desktop"
 	cp Wabbajack-NXM-Switcher.desktop $SHAREDIR/applications
 
 	echo "Creating JSON file"
@@ -148,7 +151,7 @@ function switch () {
 function add () {
 	echo -e "${CYAN}Enter the name of the instance (Can be anything)${NC}"
 	read -p 'Name: ' name
-	echo -e "${CYAN}Enter the game exactly as it appears in its Nexus url${NC}. Eg: nexusmods.com/${RED}skyrimspecialedition${NC}/mods/1"
+	echo -e "${CYAN}Enter the game exactly as it appears in its Nexus url${NC}. E.g: nexusmods.com/${RED}skyrimspecialedition${NC}/mods/1"
 	read -p 'Game: ' game
 	echo -e "${CYAN}Enter the Steam AppID you're using to launch MO2${NC}. Launch protontricks --gui and it's the number next to the game's name"
 	read -p 'AppID: ' appid
